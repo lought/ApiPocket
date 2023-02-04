@@ -25,4 +25,17 @@ class HomeController extends Controller
     {
         return view('auth.dashboard');
     }
+
+    public function categories()
+    {
+        return view('auth.categories'); 
+    }
+    public function expenses()
+    {
+        return view('auth.expenses'); 
+    }
+    public function income()
+    {
+        return view('auth.income'); 
+    }
 }

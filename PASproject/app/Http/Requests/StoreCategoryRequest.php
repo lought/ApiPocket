@@ -24,8 +24,9 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'categoryName' => ['required', 'max:70'],
-            'limit'  => ['required']
+            'idUser' => ['required' ],
+            'categoryName'  => ['required','max:70'],
+            'limit'=>['required']
         ];
     }
 }

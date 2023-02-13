@@ -73,7 +73,7 @@ class MovementsController extends Controller
      * @param  \App\Models\Movements  $movements
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movements $movements)
+    public function update(StoreMovementsRequest $request, Movements $movements)
     {
         $movements->update($request->all());
         

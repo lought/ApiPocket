@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Models\Category;
+use App\Http\Models\Movements;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\MovementsController;
 use Illuminate\Http\Request;
@@ -20,4 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('movements',MovementsController::class);
-Route::apiResource('category',CategoryController::class);
+Route::apiResource('category', CategoryController::class);
+/*
+Route::get('/categories',function(){
+    return Category::all();
+});
+Route::get('/movements',function(){
+    return Movements::all();
+});*/

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Movements extends Model
 {
     use HasFactory;
-    protected $fillable = ['value', 'description','movementsDate'];
+    protected $fillable = ['idUser', 'idCategory','value','description','movementsdate'];
 }

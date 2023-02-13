@@ -24,10 +24,14 @@ class StoreMovementsRequest extends FormRequest
     public function rules()
     {
         return [
+            'idUser'=>['required'],
+            'idCategory'=>['required'],
             'value' => ['required', 'max:30'],
             'description'  => ['required'],
-            'movementsDate' => ['required', 'max:120']
+            'movementsDate' => ['required', 'max:100']
+
     
         ];
+       
     }
 }

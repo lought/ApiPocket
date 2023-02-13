@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Resources\CategoryResource;
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -39,6 +39,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        
         $category = Category::create($request->all());
         
         return new CategoryResource($category);
@@ -47,23 +48,31 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($idUser)
     {
-        //
-    }
+        return Category::where('idUser', (string) $idUser)->get();
 
+    }
+/*
+    public function showCategories($idUser) {
+        
+        $categories = Category::where('idUser', $idUser)->get();
+        return view('table', compact('categories'));
+      }
+*/
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('edit', compact('category'));
     }
 
     /**
@@ -73,7 +82,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(StoreCategoryRequest $request, Category $category)
     {
         $category->update($request->all());
         

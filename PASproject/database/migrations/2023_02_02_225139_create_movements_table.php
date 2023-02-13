@@ -14,12 +14,12 @@ class CreateMovementsTable extends Migration
     public function up()
     {
         Schema::create('movements', function (Blueprint $table) {
-            $table->idMovements();
-            $table->idUser();
-            $table->idCategory();
-            $table->value();
-            $table->description();
-            $table->limit();
+            $table->id();
+            $table->string('idUser');
+            $table->string('idCategory');
+            $table->string('value');
+            $table->string('description');
+            $table->timestamp('movementsdate');
         });
     }
 

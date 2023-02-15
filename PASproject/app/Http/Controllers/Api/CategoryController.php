@@ -53,8 +53,9 @@ class CategoryController extends Controller
      */
     public function show($idUser)
     {
-        return Category::where('idUser', (string) $idUser)->get();
-
+        $category = Category::where('idUser', (string) $idUser)->get();
+        return CategoryResource::collection($category);
+    
     }
 /*
     public function showCategories($idUser) {

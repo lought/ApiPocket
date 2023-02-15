@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/categories', [App\Http\Controllers\HomeController::class, 'categories'])->name('categories');
 Route::get('/expenses', [App\Http\Controllers\HomeController::class, 'expenses'])->name('expenses');
 Route::get('/income', [App\Http\Controllers\HomeController::class, 'income'])->name('income');
+//Route::get('/categories/{idUser}', [App\Http\Controllers\HomeController::class, 'categories'])->name('categories');

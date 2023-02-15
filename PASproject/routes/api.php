@@ -20,12 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::apiResource('categories',CategoryController::class);
 Route::apiResource('movements',MovementsController::class);
-Route::apiResource('category', CategoryController::class);
-/*
-Route::get('/categories',function(){
-    return Category::all();
-});
-Route::get('/movements',function(){
-    return Movements::all();
-});*/
+//Route::apiResource('categories/{idUser}',CategoryController::class);

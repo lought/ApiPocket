@@ -41,8 +41,26 @@ Neste projeto foi desenvolvida uma aplicação com, o objetivo de gerir as despe
 * (https://www.youtube.com/playlist?list=PLDc9bt_00KcKijBHJTbVsYagHeJC6X3YD)
 
 ## End Points
-* Movements
-http://localhost:8000/api/movements
+* Todos Movimentos
+(http://localhost:8000/api/movements)
+
+* Todas Categorias
+(http://localhost:8000/api/categories)
+
+* Todos Users
+(http://localhost:8000/api/users)
+
+* Todos Movimentos por user
+(http://localhost:8000/api/movements/{id})
+
+* Todas Categorias por user
+(http://localhost:8000/api/categories/{id})
+
+* Soma todas as Receitas por user
+(http://localhost:8000/api/movements/positive-sum/{id})
+
+* Soma todas as despesas por user
+(http://localhost:8000/api/movements/negative-sum/{id})
 
 ## Aplicações e Tecnologias
 * Html

@@ -41,7 +41,6 @@ class CategoryController extends Controller
     {
         
         $category = Category::create($request->all());
-        
         return new CategoryResource($category);
     }
 
@@ -85,6 +84,7 @@ class CategoryController extends Controller
      */
     public function update(StoreCategoryRequest $request, Category $category)
     {
+        $this->authorize('update', $category);
         $category->update($request->all());
         
         return new CategoryResource($category);

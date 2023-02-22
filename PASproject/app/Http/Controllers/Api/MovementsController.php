@@ -50,11 +50,61 @@ class MovementsController extends Controller
      * @param  \App\Models\Movements  $movements
      * @return \Illuminate\Http\Response
      */
-    public function show(Movements $movements)
+    public function show($idUser)
     {
-        //
+        $movements = Movements::where('idUser', (string) $idUser)->get();
+        return MovementsResource::collection($movements);
     }
+    public function showpositive($idUserP)
+    {
+        $movements = Movements::join('categories', 'movements.idCategory', '=', 'categories.id')
+            ->where('movements.idUser', $idUserP)
+            ->where('movements.value', '>', 0)
+            ->select('movements.*', 'categories.categoryName')
+            ->get();
+            
+        return MovementsResource::collection($movements);
+    }
+    public function shownegative($idUser){
+        $movements = Movements::join('categories', 'movements.idCategory', '=', 'categories.id')
+            ->where('movements.idUser', $idUser)
+            ->where('movements.value', '<', 0)
+            ->select('movements.*', 'categories.categoryName')
+            ->get();
+            
+        return MovementsResource::collection($movements);
+    }
+    public function sumpositive($idUser)
+    {
+        $movements = Movements::where('idUser', $idUser)
+            ->where('value', '>', 0)
+            ->get();
 
+        $sum = $movements->sum('value');
+
+        $data = [
+            'movements' => $movements,
+            'sum' => $sum,
+        ];
+
+        return new MovementsResource($data);
+    }
+    public function getPositiveSum($userId)
+{
+    $positiveSum = Movements::where('idUser', $userId)
+                            ->where('value', '>', 0)
+                            ->sum('value');
+
+    return response()->json(['positive_sum' => $positiveSum]);
+}
+public function getNegativeSum($userId)
+{
+    $negativesum = Movements::where('idUser', $userId)
+                            ->where('value', '>', 0)
+                            ->sum('value');
+
+    return response()->json(['negative_sum' => $negativesum]);
+}
     /**
      * Show the form for editing the specified resource.
      *

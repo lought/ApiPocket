@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Category;
-use App\Http\Controllers\Api\CategoryController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Api\MovementsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/categories', [App\Http\Controllers\HomeController::class, 'categories'])->name('categories');
+Route::get('/categories', [App\Http\Controllers\HomeController::class, 'categories'])
+    ->name('categories')
+    ->middleware('auth');
 Route::get('/expenses', [App\Http\Controllers\HomeController::class, 'expenses'])->name('expenses');
 Route::get('/income', [App\Http\Controllers\HomeController::class, 'income'])->name('income');
 //Route::get('/categories/{idUser}', [App\Http\Controllers\HomeController::class, 'categories'])->name('categories');

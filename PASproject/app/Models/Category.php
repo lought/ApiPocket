@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['idUser', 'categoryName','limit'];
+
+    protected $fillable = ['idUser', 'categoryName', 'limit'];
+    public $timestamps = false;
 }

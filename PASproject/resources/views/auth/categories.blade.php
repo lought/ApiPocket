@@ -1,5 +1,4 @@
 @extends('layouts.auth');
-
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper">
@@ -14,13 +13,18 @@
                                 <thead>
                                     <tr>
                                         <th>ID Category</th>
-                                        <th>ID User</th>
                                         <th>Category Name</th>
                                         <th>Limit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                
+                                    @foreach ($category as $categories)
+                                    <tr>
+                                        <td>{{ $categories->id}}</td>
+                                        <td>{{ $categories->categoryName}}</td>
+                                        <td>{{ $categories->limit}}</td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
